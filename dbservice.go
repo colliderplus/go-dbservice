@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"log"
+	_ "github.com/lib/pq"
 )
 
 type DB struct {
