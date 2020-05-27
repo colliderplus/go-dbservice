@@ -55,13 +55,16 @@ type MigrationJob = func(db *gorm.DB) error
 type MigrationJobs = []MigrationJob
 
 
-func Migrate(d *DB, models []interface{}, schema []MigrationSchema) {
+func Migrate(d *DB, models ...interface{}) {
 	createModel(d,
 		&Migration{},
 	)
 	d.db.AutoMigrate(
 		models...
 	)
+}
+
+func MigrateMethods(d *DB, schema ...MigrationSchema) {
 	go migrationsMethods(d.db.Unscoped(), schema...)
 }
 
