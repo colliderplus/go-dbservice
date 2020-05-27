@@ -58,6 +58,7 @@ type MigrationJobs = []MigrationJob
 func Migrate(d *DB, models ...interface{}) {
 	createModel(d,
 		&Migration{},
+		models,
 	)
 	d.db.AutoMigrate(
 		models...
